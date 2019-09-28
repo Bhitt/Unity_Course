@@ -6,12 +6,10 @@ using UnityEngine;
 public class Batty : MonoBehaviour {
 
     Rigidbody rigidBody;
-    AudioSource audioSource;
 
 	// Use this for initialization
 	void Start () {
-        rigidBody = GetComponent<Rigidbody>();
-        audioSource = GetComponent<AudioSource>();
+        rigidBody = GetComponent<Rigidbody>(); 
 	}
 	
 	// Update is called once per frame
@@ -21,29 +19,19 @@ public class Batty : MonoBehaviour {
 
     private void ProcessInput()
     {
-        if (Input.GetKey(KeyCode.Space))    // can thrust while rotating
+        if (Input.GetKey(KeyCode.Space))
         {
-            //print("Thrusting");
-            rigidBody.AddRelativeForce(Vector3.up);
-            if (!audioSource.isPlaying) // avoids layering sound on top of itself
-            {
-                audioSource.Play();
-            }
-        }
-        else
-        {
-            audioSource.Stop();
+            //Thrusting
+            rigidBody.AddRelativeForce(Vector3.up);   //using Vector3
         }
 
-        if (Input.GetKey(KeyCode.A))        // rotate right or left
+        if (Input.GetKey(KeyCode.A))
         {
-            //print("Rotating Left");
-            transform.Rotate(Vector3.forward);
-        }
-        else if (Input.GetKey(KeyCode.D))
+            //Rotate Left
+
+        }else if (Input.GetKey(KeyCode.D))
         {
-            //print("Rotating Right");
-            transform.Rotate(-Vector3.forward);
+            //Rotate Right
         }
     }
 }
